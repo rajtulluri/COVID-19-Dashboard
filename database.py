@@ -8,7 +8,7 @@ or PostgreSQl database.
 import pandas as pd
 import numpy as np
 import datetime as dt
-from psycopg2 import connect
+# from psycopg2 import connect
 
 
 countries = [
@@ -21,35 +21,35 @@ countries = [
     'belarus', 'ecuador', 'sweden'
 ]
 
-def connect_database(dbname, user='hp', password='test1234', host='127.0.0.1', autocommit=False):
-    """
-    Connect to the PostgreSQL database based on the parameters.
+# def connect_database(dbname, user='hp', password='test1234', host='127.0.0.1', autocommit=False):
+#     """
+#     Connect to the PostgreSQL database based on the parameters.
     
-    parameters:
-        dbname: str.
-        Name of the database.
+#     parameters:
+#         dbname: str.
+#         Name of the database.
         
-        user: str.
-        Name of the user. Default hp.
+#         user: str.
+#         Name of the user. Default hp.
         
-        password: str.
-        Password for the user to connect.
+#         password: str.
+#         Password for the user to connect.
         
-        host: str.
-        The IP address of the hosted database. Default 127.0.0.1 (localhost).
+#         host: str.
+#         The IP address of the hosted database. Default 127.0.0.1 (localhost).
         
-        autocommit: Boolean.
-        Set autocommit to True or False. Default False
+#         autocommit: Boolean.
+#         Set autocommit to True or False. Default False
         
-    returns:
-        conn: connection object.
-        A connection object to the database.
-    """
+#     returns:
+#         conn: connection object.
+#         A connection object to the database.
+#     """
     
-    conn = connect("dbname="+dbname+" user="+user+" password="+password+" host="+host)
-    conn.autocommit = True
+#     conn = connect("dbname="+dbname+" user="+user+" password="+password+" host="+host)
+#     conn.autocommit = True
     
-    return conn
+#     return conn
 
 def read_dataset(country):
 	"""
