@@ -33,7 +33,27 @@ Install the following dependencies using pip.
 - flask
 - plotly
 
-        pip install dash
-        
+You can use the below command,
+
+    pip install dash
+
+Create a Procfile with the contents
+    
+    web: gunicorn app:server
+    
+Retrieve requirements.txt file using pip freeze as,
+
+    pip freeze > requirements.txt
+    
+Finally, run the following commands
+
+    heroku create my_app
+    git add .
+    git commit -m "Initial push"
+    git push heroku master
+    heroku ps:scale web=1
+    
+The heroku server will provide with the link. Your app is now deployed.
+The above app can be checked out at this link - https://covid19-dashboard-appv1.herokuapp.com/
 
 
