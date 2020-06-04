@@ -12,3 +12,28 @@ Run the app.py file
     python3 app.py
     
 To access the dashboard, type localhost:3000 in the browser.
+
+### To deploy the application on heroku :-
+
+Fork the repository and make changes as you wish.
+Create a new conda environment,
+
+    conda create -n env_name python=3.6
+
+Then activate the new environment created,
+
+    conda activate env_name
+    
+Install the following dependencies using pip.
+
+- dash
+- pandas
+- numpy
+- gunicorn
+- flask
+- plotly
+
+        pip install dash
+        
+
+
