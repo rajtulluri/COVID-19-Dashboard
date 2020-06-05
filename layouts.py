@@ -373,4 +373,4 @@ page_layout = html.Div(children= [
 
 	], style={})
 
-], style= {'backgroundColor':'white'})
+], style= {'width':'100%','backgroundColor':'white'})
