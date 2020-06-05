@@ -113,7 +113,7 @@ def update_daily_case_graph(country, month):
 	data= [
 		go.Bar(
 			x= country_df.date,
-			y= country_df.daily_cases,
+			y= abs(country_df.daily_cases),
 			hovertemplate= 'Cases reported: %{y:.0f}<extra></extra>',
 			marker= dict(color= 'mediumaquamarine')
 		)
@@ -227,7 +227,7 @@ def update_daily_deaths_graph(country, month):
 	return {
 		'data': [dict(
 			x= country_df.date,
-			y= country_df.daily_deaths,
+			y= abs(country_df.daily_deaths),
 			type= 'bar',
 			hovertemplate= 'Deaths reported: %{y:.0f}<extra></extra>',
 			marker= {'color':'coral'}
