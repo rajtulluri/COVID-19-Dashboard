@@ -37,7 +37,7 @@ You can use the below command,
 
     pip install dash
 
-Create a Procfile with the contents
+Create a file named Procfile with the contents
     
     web: gunicorn app:server
     
