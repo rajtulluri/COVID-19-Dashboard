@@ -258,7 +258,8 @@ page_layout = html.Div(children= [
 						html.Div([
 
 							dcc.Graph(
-								id= 'line-total-cases'
+								id= 'line-total-cases',
+								style= {'height':'55vh'}
 							)
 
 							],
@@ -274,7 +275,8 @@ page_layout = html.Div(children= [
 						html.Div([
 
 							dcc.Graph(
-								id= 'line-total-deaths'
+								id= 'line-total-deaths',
+								style= {'height':'55vh'}
 							)
 
 							],
@@ -297,7 +299,8 @@ page_layout = html.Div(children= [
 						html.Div(children= [
 
 							dcc.Graph(
-								id= 'bar-daily-cases'
+								id= 'bar-daily-cases',
+								style= {'height':'55vh'}
 							)
 
 						],
@@ -313,7 +316,8 @@ page_layout = html.Div(children= [
 						html.Div(children= [
 
 							dcc.Graph(
-								id= 'bar-daily-deaths'
+								id= 'bar-daily-deaths',
+								style= {'height':'55vh'}
 							)
 
 						],

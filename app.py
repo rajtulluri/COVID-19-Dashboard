@@ -72,9 +72,7 @@ def update_total_case_graph(country, scale, month):
 		yaxis= { 'showticklabels':False},
 		xaxis= {'showgrid':False},
 		paper_bgcolor= '#F8F8F8',
-		plot_bgcolor= '#F8F8F8',
-		height=370,
-		width= 460,	
+		plot_bgcolor= '#F8F8F8',	
 		margin= dict(l=38,b=32,t=30,r=45)
 	)
 
@@ -125,8 +123,6 @@ def update_daily_case_graph(country, month):
 		xaxis= {'showgrid':False},
 		paper_bgcolor= '#F8F8F8',
 		plot_bgcolor= '#F8F8F8',
-		height=370,
-		width= 460,	
 		margin= dict(l=38,b=32,t=30,r=45)
 	)
 
@@ -187,8 +183,6 @@ def update_total_deaths_graph(country, scale, month):
 		xaxis= {'showgrid':False},
 		paper_bgcolor= '#F8F8F8',
 		plot_bgcolor= '#F8F8F8',
-		height=370,
-		width= 460,	
 		margin= dict(l=38,b=32,t=30,r=45)
 	)
 
@@ -238,9 +232,7 @@ def update_daily_deaths_graph(country, month):
 			xaxis= {'showgrid':False},
 			paper_bgcolor= '#F8F8F8',
 			plot_bgcolor= '#F8F8F8',
-		height=370,
-		width= 460,	
-		margin= dict(l=38,b=32,t=30,r=45)
+			margin= dict(l=38,b=32,t=30,r=45)
 		)
 	}
 
@@ -588,4 +580,4 @@ def update_case_rate(country):
 if __name__ == '__main__':
 
 	app.title= 'COVID-19 Dashboard'
-	app.run_server(debug=True, port=3000)
+	app.run_server(debug=True, host= '127.0.0.1',port=5000)
