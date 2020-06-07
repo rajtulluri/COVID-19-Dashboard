@@ -15,6 +15,8 @@ from dash.dependencies import Input, Output
 import plotly.graph_objects as go
 from layouts import *
 from database import read_dataset
+from scipy.signal import savgol_filter
+
 
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -575,6 +577,68 @@ def update_case_rate(country):
 		'data':data,
 		'layout':layout
 	}	
+
+
+@app.callback(
+	Output('trends','figure'),
+	[Input('country-name','value')]
+)
+def update_trend_graph(country):
+	"""
+	Update the area plot showing the trend in the total reported
+	cases and deaths in the country
+
+	parameters:
+		country: str.
+		Specify country.
+
+	returns:
+		figure: go.Figure object.
+		A figure object for the graph.
+	"""
+
+	country_df = read_dataset(country)
+	daily_cases = savgol_filter(abs(country_df.daily_cases),13,3, mode='mirror')
+	daily_deaths = savgol_filter(abs(country_df.daily_deaths),13,3)
+	current_date = country_df.iloc[-1].date
+
+	data= [
+		go.Scatter(
+			x= country_df.date,
+			y= daily_cases,
+			mode='none',
+			fill='tozeroy',
+			name= 'cases',
+			text= abs(country_df.daily_cases),
+			hovertemplate= 'Reported cases: %{text}<extra></extra>'
+		),
+
+		go.Scatter(
+			x= country_df.date,
+			y= daily_deaths,
+			mode='none',
+			fill='tozeroy',
+			name= 'deaths',
+			text= abs(country_df.daily_deaths),
+			fillcolor= 'crimson',
+			hovertemplate= 'Reported deaths: %{text}<extra></extra>'
+		)
+	]
+
+	layout= dict(
+		title= {'text':'<b>Trend in reported cases - '+country.capitalize()+'</b>', 'x':0.5, 'y':0.95},
+		yaxis= {'showticklabels':False, 'showgrid':False},
+		xaxis= {'showgrid':False},
+		paper_bgcolor= '#F8F8F8',
+		plot_bgcolor= '#F8F8F8',
+		showlegend= False,
+		margin= dict(l=25,b=38,t=33,r=25)
+	)
+
+	return {
+		'data':data,
+		'layout':layout
+	}
 
 
 if __name__ == '__main__':

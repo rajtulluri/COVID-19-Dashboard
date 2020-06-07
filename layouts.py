@@ -339,7 +339,22 @@ page_layout = html.Div(children= [
 
 				], style= {'width':'100%'},
 				className= 'row'
-				)
+				),
+
+				html.Br(),
+				html.Br(),
+
+				html.Center(html.Label(children= 'Month')),
+				html.Div(children= [
+					dcc.Slider(
+						id= 'date-slider',
+						min= df.month.min(),
+						max= df.month.max(),
+						value= df.month.max(),
+						marks= {str(i):str(calendar.month_name[i]) for i in df.month.unique()},
+						step= None
+					)
+				])
 
 			], style= {'width':'80%', 'marginLeft':'2%'},
 			 className= 'two columns')
@@ -351,26 +366,21 @@ page_layout = html.Div(children= [
 
 		html.Br(),
 
-		html.Div(children= [
+		html.Center(children= [
+			html.Div(children= [
 
-			html.Center(children= [
-
-				html.Div(children= [
-
-					html.Label(children= 'Month'),
-
-					dcc.Slider(
-						id= 'date-slider',
-						min= df.month.min(),
-						max= df.month.max(),
-						value= df.month.max(),
-						marks= {str(i):str(calendar.month_name[i]) for i in df.month.unique()},
-						step= None
-					)
-				], style= {'width':'75%'})
-
-			], style= {})
-			
+				dcc.Graph(
+					id= 'trends',
+					style={
+						'width':'100%'
+					}
+				)
+				
+			], style={
+				'border':'thin lightgrey solid',
+				'box-shadow': '2px 2px 2px lightgrey',
+				'background-color': 'rgb(250, 250, 250)',
+			}),
 		]),
 
 		html.Br(),
