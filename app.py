@@ -16,7 +16,8 @@ import plotly.graph_objects as go
 from layouts import *
 from database import read_dataset
 from scipy.signal import savgol_filter
-
+from tab_country import tab1_layout
+from tab_world import tab2_layout
 
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -640,8 +641,23 @@ def update_trend_graph(country):
 		'layout':layout
 	}
 
+@app.callback(
+	Output('tab-content','children'),
+	[Input('tab-select','value')]
+)
+def tab_layout_changer(tab):
+
+	if tab == 'tab-1':
+
+		return tab1_layout
+
+	if tab == 'tab-2':
+
+		return tab2_layout
+
 
 if __name__ == '__main__':
 
 	app.title= 'COVID-19 Dashboard'
+	app.config.suppress_callback_exceptions = True
 	app.run_server(debug=True, host= '127.0.0.1',port=5000)
